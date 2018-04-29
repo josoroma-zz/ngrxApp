@@ -30,6 +30,8 @@ ng set --global packageManager=yarn
 
 ## Auth module
 
+- https://github.com/angular/angular-cli/wiki/generate-module
+
 ```
 ng g module components/Auth --routing --flat false
 
@@ -40,6 +42,8 @@ create src/app/components/auth/auth.module.ts
 ```
 
 ### Auth module - Landing component
+
+- https://github.com/angular/angular-cli/wiki/generate-component
 
 ```
 ng g component components/auth/components/Landing -m components/auth/auth.module.ts --spec
@@ -79,4 +83,35 @@ create src/app/components/auth/components/login/login.component.html
 create src/app/components/auth/components/login/login.component.spec.ts
 create src/app/components/auth/components/login/login.component.ts
 update src/app/components/auth/auth.module.ts
+```
+
+## tree
+
+```
+|____app.component.html
+|____app-routing.module.ts
+|____app.component.scss
+|____app.component.spec.ts
+|____app.module.ts
+|____app.component.ts
+|____components
+| |____auth
+| | |____components
+| | | |____landing
+| | | | |____landing.component.spec.ts
+| | | | |____landing.component.ts
+| | | | |____landing.component.html
+| | | | |____landing.component.scss
+| | | |____signup
+| | | | |____signup.component.ts
+| | | | |____signup.component.spec.ts
+| | | | |____signup.component.html
+| | | | |____signup.component.scss
+| | | |____login
+| | | | |____login.component.spec.ts
+| | | | |____login.component.ts
+| | | | |____login.component.scss
+| | | | |____login.component.html
+| | |____auth-routing.module.ts
+| | |____auth.module.ts
 ```
