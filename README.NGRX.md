@@ -27,3 +27,14 @@ cd ngrxApp
 ```
 ng set --global packageManager=yarn
 ```
+
+## Auth module
+
+```
+ng g module components/Auth --routing --flat false
+
+# then you will see:
+
+create src/app/components/auth/auth-routing.module.ts
+create src/app/components/auth/auth.module.ts
+```
