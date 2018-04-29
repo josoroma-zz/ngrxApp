@@ -52,3 +52,17 @@ create src/app/components/auth/components/landing/landing.component.spec.ts
 create src/app/components/auth/components/landing/landing.component.ts
 update src/app/components/auth/auth.module.ts
 ```
+
+### Auth module - Signup component
+
+```
+ng g component components/auth/components/Signup -m components/auth/auth.module.ts --spec
+
+# then you will see:
+
+create src/app/components/auth/components/signup/signup.component.scss
+create src/app/components/auth/components/signup/signup.component.html
+create src/app/components/auth/components/signup/signup.component.spec.ts
+create src/app/components/auth/components/signup/signup.component.ts
+update src/app/components/auth/auth.module.ts
+```
