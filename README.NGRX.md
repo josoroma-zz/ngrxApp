@@ -38,3 +38,17 @@ ng g module components/Auth --routing --flat false
 create src/app/components/auth/auth-routing.module.ts
 create src/app/components/auth/auth.module.ts
 ```
+
+### Auth module - Landing component
+
+```
+ng g component components/auth/components/Landing -m components/auth/auth.module.ts --spec
+
+# then you will see:
+
+create src/app/components/auth/components/landing/landing.component.scss
+create src/app/components/auth/components/landing/landing.component.html
+create src/app/components/auth/components/landing/landing.component.spec.ts
+create src/app/components/auth/components/landing/landing.component.ts
+update src/app/components/auth/auth.module.ts
+```
