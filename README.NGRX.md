@@ -134,3 +134,13 @@ update src/app/components/auth/auth.module.ts
 ### Signup works!
 
 - http://localhost:4200/auth/signup
+
+## Let's create a sharable Material Module
+
+```
+ng g module shared/Material --flat false
+
+# then you will see:
+
+create src/app/shared/material/material.module.ts
+```
