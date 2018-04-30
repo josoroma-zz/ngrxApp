@@ -115,3 +115,22 @@ update src/app/components/auth/auth.module.ts
 | | |____auth-routing.module.ts
 | | |____auth.module.ts
 ```
+
+## Auth module routing and App module routing
+
+- https://angular.io/api/router/RouterModule
+
+- https://angular.io/guide/lazy-loading-ngmodules
+
+
+### Landing works!
+
+- http://localhost:4200/auth
+
+### Login works!
+
+- http://localhost:4200/auth/login
+
+### Signup works!
+
+- http://localhost:4200/auth/signup
