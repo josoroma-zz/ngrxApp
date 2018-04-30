@@ -135,7 +135,24 @@ update src/app/components/auth/auth.module.ts
 
 - http://localhost:4200/auth/signup
 
+## ng serve
+
+```
+chunk {auth.module} auth.module.chunk.js
+chunk {inline} inline.bundle.js
+chunk {main} main.bundle.js
+chunk {polyfills} polyfills.bundle.js
+chunk {styles} styles.bundle.js
+chunk {vendor} vendor.bundle.js
+```
+
 ## Let's create a sharable Material Module
+
+- https://material.angular.io/guide/getting-started
+
+```
+yarn add @angular/material @angular/cdk @angular/animations
+```
 
 ```
 ng g module shared/Material --flat false
