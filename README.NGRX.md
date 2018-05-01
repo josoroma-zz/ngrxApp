@@ -175,3 +175,9 @@ Now we have routes configured and a place to render them, but how do we navigate
 - https://material.angular.io/components/button/examples
 
 - https://angular.io/guide/router#link-parameters-array
+
+## Theming our Angular Material app
+
+- https://material.angular.io/guide/theming
+
+- https://material.angular.io/guide/theming#using-a-pre-built-theme
