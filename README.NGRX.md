@@ -122,6 +122,10 @@ update src/app/components/auth/auth.module.ts
 
 - https://angular.io/guide/lazy-loading-ngmodules
 
+- https://angular.io/guide/router#the-appcomponent-shell
+
+- https://angular.io/guide/router#router-outlet
+
 
 ### Landing works!
 
@@ -161,3 +165,13 @@ ng g module shared/Material --flat false
 
 create src/app/shared/material/material.module.ts
 ```
+
+### Play with Card Content Container and [routerLink] parameters
+
+Now we have routes configured and a place to render them, but how do we navigate?
+
+- https://material.angular.io/components/card/examples
+
+- https://material.angular.io/components/button/examples
+
+- https://angular.io/guide/router#link-parameters-array
