@@ -7,14 +7,6 @@ import { User } from '../../../../models/user';
 
 import { LoggerService } from '../../../../services/logger.service';
 
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -26,10 +18,9 @@ export class SignupComponent implements OnInit {
 
   user: User = new User();
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email, Validators.maxLength(100)]);
-  passwordFormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
-
-  matcher = new MyErrorStateMatcher();
+  signupForm: FormGroup;
+  email: FormControl;
+  password: FormControl;
 
   constructor(logger: LoggerService) {
     this.logger = logger;
@@ -38,10 +29,34 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.createFormControls();
+    this.createForm();
+  }
+
+  createFormControls() {
+    this.email = new FormControl(this.user.email, [
+      Validators.required,
+      Validators.email
+    ]);
+
+    this.password = new FormControl(this.user.password, [
+      Validators.required,
+      Validators.minLength(8)
+    ]);
+  }
+
+  createForm() {
+    this.signupForm = new FormGroup({
+      email: this.email,
+      password: this.password
+    });
   }
 
   onSubmit() {
-    this.logger.logInfo('onSubmit');
-    this.logger.logInfo(this.user);
+    if (this.signupForm.valid) {
+      console.log('onSubmit');
+      console.log(this.signupForm.value);
+      this.signupForm.reset();
+    }
   }
 }
