@@ -14,7 +14,7 @@
             matInput
             type="email"
             class="form-control"
-            formControlName="email"
+            [formControl]="email"
             placeholder="Enter your email">
           <!-- user.email :: errors -->
           <mat-error
@@ -33,7 +33,7 @@
             matInput
             type="password"
             class="form-control"
-            formControlName="password"
+            [formControl]="password"
             placeholder="Enter your password">
           <!-- user.password :: errors -->
           <mat-error

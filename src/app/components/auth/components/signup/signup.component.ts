@@ -7,6 +7,9 @@ import { User } from '../../../../models/user';
 
 import { LoggerService } from '../../../../services/logger.service';
 
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -31,6 +34,13 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
     this.createFormControls();
     this.createForm();
+
+    this.email.valueChanges
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+        this.logger.logInfo(term);
+      });
   }
 
   createFormControls() {
@@ -54,8 +64,8 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     if (this.signupForm.valid) {
-      console.log('onSubmit');
-      console.log(this.signupForm.value);
+      this.logger.logInfo('onSubmit');
+      this.logger.logInfo(this.signupForm.value);
       this.signupForm.reset();
     }
   }

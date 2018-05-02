@@ -230,3 +230,11 @@ create src/app/services/logger.service.spec.ts
 create src/app/services/logger.service.ts
 update src/app/components/auth/auth.module.ts
 ```
+
+## Submit and reset
+
+- https://codecraft.tv/courses/angular/forms/submitting-and-resetting/
+
+## Let's use a Reactive Model Form approach
+
+- https://codecraft.tv/courses/angular/forms/reactive-model-form/
