@@ -4,6 +4,8 @@
 
 - https://github.com/ngrx/platform/tree/master/example-app/app
 
+- https://github.com/angular/angular/tree/master/aio/content/examples
+
 - https://yarnpkg.com/en/docs/managing-dependencies
 
 ```
@@ -181,3 +183,50 @@ Now we have routes configured and a place to render them, but how do we navigate
 - https://material.angular.io/guide/theming
 
 - https://material.angular.io/guide/theming#using-a-pre-built-theme
+
+## Let's define our User Model
+
+- https://github.com/angular/angular-cli/wiki/generate-class
+
+- https://github.com/ngrx/platform/blob/master/example-app/app/books/models/book.ts
+
+```
+ng g class models/user
+```
+
+### Forms
+
+- https://angular.io/guide/forms
+
+- https://material.angular.io/components/input/overview#changing-when-error-messages-are-shown
+
+- https://github.com/angular/material2/blob/master/src/material-examples/input-error-state-matcher/input-error-state-matcher-example.ts
+
+- https://github.com/angular/angular/blob/master/aio/content/examples/form-validation/src/app/template/hero-form-template.component.html
+
+- https://github.com/angular/angular/blob/master/aio/content/examples/forms/src/app/hero-form/hero-form.component.html
+
+**Reactive forms**:
+
+- https://angular.io/guide/reactive-forms
+
+```
+yarn add @angular/forms
+```
+
+### Add a logger service
+
+- https://angular.io/guide/architecture-services
+
+- https://angular.io/tutorial/toh-pt4
+
+- https://angularfirebase.com/lessons/methods-for-debugging-an-angular-application
+
+
+```
+ng g s services/Logger -m=components/auth/auth.module.ts
+
+create src/app/services/logger.service.spec.ts
+create src/app/services/logger.service.ts
+update src/app/components/auth/auth.module.ts
+```
