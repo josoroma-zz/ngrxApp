@@ -38,8 +38,9 @@ export class SignupComponent implements OnInit {
     this.email.valueChanges
       .debounceTime(400)
       .distinctUntilChanged()
-      .subscribe(term => {
-        this.logger.logInfo(term);
+      .subscribe(data => {
+        this.logger.logInfo('SignupComponent - ngOnInit - this.email.valueChanges - data');
+        this.logger.logInfo(data);
       });
   }
 
@@ -64,7 +65,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     if (this.signupForm.valid) {
-      this.logger.logInfo('onSubmit');
+      this.logger.logInfo('SignupComponent - onSubmit - this.signupForm.value');
       this.logger.logInfo(this.signupForm.value);
       this.signupForm.reset();
     }

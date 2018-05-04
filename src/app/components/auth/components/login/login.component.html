@@ -1,13 +1,66 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>Login</mat-card-title>
-    <mat-card-subtitle>Get access to your own private tools.</mat-card-subtitle>
+    <mat-card-subtitle>Get free beer, forever!</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <form></form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button [routerLink]="['/auth']">Cancel</button>
-    <button mat-raised-button color="primary">Login</button>
-  </mat-card-actions>
+  <form
+    novalidate
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <!-- user.email -->
+      <mat-form-field>
+        <input
+          matInput
+          type="email"
+          class="form-control"
+          [formControl]="email"
+          placeholder="Enter your email">
+        <!-- user.email :: errors -->
+        <mat-error *ngIf="email.errors && (email.dirty || email.touched)">
+          <mat-error *ngIf="email.errors.email && !email.errors.required">
+            Please enter a <strong>valid</strong> email address.
+          </mat-error>
+          <mat-error *ngIf="email.errors.required">
+            Email is <strong>required</strong>.
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <!-- user.password -->
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          class="form-control"
+          [formControl]="password"
+          placeholder="Enter your password">
+        <!-- user.password :: errors -->
+        <mat-error *ngIf="email.errors && (email.dirty || email.touched)">
+          <mat-error *ngIf="password.errors.required">
+            Password is <strong>required</strong>.
+          </mat-error>
+          <mat-error *ngIf="password.errors.minlength">
+            Should contain <strong>8</strong> characters.
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <!-- cancel :: go back -->
+      <button
+        mat-raised-button
+        type="button"
+        [routerLink]="['/auth']">
+        Cancel
+      </button>
+      <!-- register :: submit -->
+      <button
+        mat-raised-button
+        type="submit"
+        color="primary"
+        [disabled]="email.invalid || password.invalid">
+        Register
+      </button>
+    </mat-card-actions>
+  </form>
 </mat-card>

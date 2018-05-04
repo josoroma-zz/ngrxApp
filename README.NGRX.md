@@ -238,3 +238,54 @@ update src/app/components/auth/auth.module.ts
 ## Let's use a Reactive Model Form approach
 
 - https://codecraft.tv/courses/angular/forms/reactive-model-form/
+
+
+## Reactive forms
+
+```
+  ngOnInit() {
+    this.createFormControls();
+    this.createForm();
+
+    this.email.valueChanges
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => {
+        this.logger.logInfo(term);
+      });
+  }
+```
+
+- `valueChages` returns an observable that emits the latest values. We can therefore subscribe to `valueChanges` to update instance variables or perform operations.
+
+- `distinctUntilChanged` emits when the current value is different than the last.
+
+```
+import 'rxjs/add/operator/distinctUntilChanged';
+```
+
+https://www.learnrxjs.io/operators/filtering/distinctuntilchanged.html
+
+- `subscribe` to changes.
+
+**Notes**:
+
+- `do` is used for side-effects.
+
+- `subscribe` is used to invoke an observable.
+
+- Replacing `do` with `subscribe` creates undesired results.
+
+- Replacing `subscribe` with `do` will not even invoke the stream.
+
+If we are doing pure **functional reactive programming** we don't want any side effects in the stream. So, `do` is discouraged and mostly used only for debugging purposes.
+
+## RxJS & Angular
+
+- https://codecraft.tv/courses/angular/reactive-programming-with-rxjs/rxjs-and-angular/
+
+## NGRX Store
+
+- Store - immutable data structure.
+- Actions - describe changes to state.
+- Reducers - pure functions that create a new state.
