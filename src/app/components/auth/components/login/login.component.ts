@@ -27,8 +27,6 @@ export class LoginComponent implements OnInit {
 
   constructor(logger: LoggerService) {
     this.logger = logger;
-    this.user.email= '@';
-    this.user.password = '';
   }
 
   ngOnInit() {
