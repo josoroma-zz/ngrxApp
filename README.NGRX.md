@@ -289,3 +289,13 @@ If we are doing pure **functional reactive programming** we don't want any side 
 - Store - immutable data structure.
 - Actions - describe changes to state.
 - Reducers - pure functions that create a new state.
+
+### Install @ngrx/schematics and dependencies
+
+- https://github.com/ngrx/platform/tree/master/docs/schematics
+
+```
+yarn add @ngrx/schematics --dev
+
+yarn add @ngrx/{store,effects,entity,store-devtools}
+```
