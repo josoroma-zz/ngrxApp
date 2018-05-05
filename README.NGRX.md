@@ -258,13 +258,12 @@ update src/app/components/auth/auth.module.ts
 
 - `valueChages` returns an observable that emits the latest values. We can therefore subscribe to `valueChanges` to update instance variables or perform operations.
 
-- `distinctUntilChanged` emits when the current value is different than the last.
+- `distinctUntilChanged` emits when the current value is different than the last:
+  https://www.learnrxjs.io/operators/filtering/distinctuntilchanged.html
 
 ```
 import 'rxjs/add/operator/distinctUntilChanged';
 ```
-
-https://www.learnrxjs.io/operators/filtering/distinctuntilchanged.html
 
 - `subscribe` to changes.
 
@@ -312,4 +311,35 @@ ng g st State --root -m app.module.ts -c @ngrx/schematics
 
 create src/app/reducers/index.ts
 update src/app/app.module.ts
+```
+
+ng g component components/auth/components/Signup -m components/auth/auth.module.ts --spec
+
+
+## Initial Effects Setup
+
+- https://github.com/ngrx/platform/tree/master/docs/schematics#initial-effects-setup
+
+```
+ng g ef App --root -m app.module.ts -c @ngrx/schematics --group
+
+create src/app/effects/app.effects.ts
+create src/app/effects/app.effects.spec.ts
+update src/app/app.module.ts
+```
+
+```
+app-routing.module.ts
+app.component.html
+app.component.scss
+app.component.spec.ts
+app.component.ts
+app.module.ts           <==
+
+components/
+effects/                <==
+models/
+reducers/               <==
+services/
+shared/
 ```
