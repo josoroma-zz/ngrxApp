@@ -299,3 +299,17 @@ yarn add @ngrx/schematics --dev
 
 yarn add @ngrx/{store,effects,entity,store-devtools}
 ```
+
+### Generate the initial state management and register it within the app.module.ts
+
+- https://github.com/ngrx/platform/tree/master/docs/schematics#initial-state-setup
+
+- https://github.com/ngrx/platform/blob/master/docs/schematics/store.md
+
+
+```
+ng g st State --root -m app.module.ts -c @ngrx/schematics
+
+create src/app/reducers/index.ts
+update src/app/app.module.ts
+```
