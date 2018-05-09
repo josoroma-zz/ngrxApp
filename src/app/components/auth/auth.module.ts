@@ -12,6 +12,10 @@ import { LoginComponent } from './components/login/login.component';
 
 import { MaterialModule } from '../../shared/material/material.module';
 import { LoggerService } from '../../services/logger.service';
+import { StoreModule } from '@ngrx/store';
+import * as fromAuth from './reducers/auth.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './effects/auth.effects';
 
 @NgModule({
   imports: [
@@ -19,7 +23,9 @@ import { LoggerService } from '../../services/logger.service';
     AuthRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forFeature('auth', fromAuth.reducer),
+    EffectsModule.forFeature([AuthEffects])
   ],
   declarations: [LandingComponent, SignupComponent, LoginComponent],
   providers: [LoggerService]

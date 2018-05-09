@@ -343,3 +343,18 @@ reducers/               <==
 services/
 shared/
 ```
+
+## Generate a Feature Set for Auth
+
+- https://github.com/ngrx/platform/blob/master/docs/schematics/feature.md
+
+```
+ng generate f components/auth/Auth -m auth.module.ts -g -c @ngrx/schematics
+
+create src/app/components/auth/actions/auth.actions.ts
+create src/app/components/auth/reducers/auth.reducer.ts
+create src/app/components/auth/reducers/auth.reducer.spec.ts
+create src/app/components/auth/effects/auth.effects.ts
+create src/app/components/auth/effects/auth.effects.spec.ts
+update src/app/components/auth/auth.module.ts
+```
