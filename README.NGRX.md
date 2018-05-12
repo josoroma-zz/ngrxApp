@@ -305,6 +305,9 @@ yarn add @ngrx/{store,effects,entity,store-devtools}
 
 - https://github.com/ngrx/platform/blob/master/docs/schematics/store.md
 
+#### API
+
+- https://github.com/ngrx/platform/blob/master/docs/store/api.md#meta-reducers
 
 ```
 ng g st State --root -m app.module.ts -c @ngrx/schematics
@@ -348,6 +351,14 @@ shared/
 
 - https://github.com/ngrx/platform/blob/master/docs/schematics/feature.md
 
+Store uses fractal state management, which provides state composition through feature modules, loaded eagerly or lazily.
+
+- https://github.com/ngrx/platform/blob/master/docs/store/api.md#feature-module-state-composition
+
+The `createSelector` method returns a callback function for selecting a slice of state.
+
+- https://github.com/ngrx/platform/blob/master/docs/store/selectors.md#createselector
+
 ```
 ng generate f components/auth/Auth -m auth.module.ts -g -c @ngrx/schematics
 
@@ -358,3 +369,55 @@ create src/app/components/auth/effects/auth.effects.ts
 create src/app/components/auth/effects/auth.effects.spec.ts
 update src/app/components/auth/auth.module.ts
 ```
+
+code src/app/components/auth/reducers/index.ts
+
+```
+import { createFeatureSelector } from '@ngrx/store';
+
+import * as auth from './auth.reducer';
+
+export interface AppState {
+  authState: auth.State;
+}
+
+export const reducers = {
+  auth: auth.reducer
+};
+
+export const selectAuthState = createFeatureSelector<AppState>('auth');
+```
+
+### Add a logger service
+
+- https://github.com/angular/angular-cli/wiki/generate-service
+
+```
+ng g s components/auth/services/Auth -m=components/auth/auth.module.ts
+```
+
+## NGRX
+
+- https://github.com/ngrx/platform/issues/850#issue-299134609
+
+```
+yarn add ngrx-store-freeze --dev
+```
+
+The example application organizes it like this:
+
+- Main reducer file, which declares the state visible for all modules.
+
+  https://github.com/ngrx/platform/blob/master/example-app/app/reducers/index.ts
+
+- For each feature, a reducer file, which extends from that state and adds its part.
+
+  https://github.com/ngrx/platform/blob/master/example-app/app/auth/reducers/index.ts
+
+  `("export interface State extends fromRoot.State")`
+
+- The components of that feature use that interface and the given selectors.
+
+  https://github.com/ngrx/platform/blob/master/example-app/app/auth/containers/login-page.component.ts
+  
+We get the whole State from the Store and select the Substate we want from it via Selectors.
