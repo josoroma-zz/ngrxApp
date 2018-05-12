@@ -7,7 +7,7 @@ import { User } from '../../../models/user';
 
 @Injectable()
 export class AuthService {
-  private BASE_URL = 'http://localhost:4200';
+  private BASE_URL = 'http://localhost:1337';
 
   constructor(private http: HttpClient) {}
 

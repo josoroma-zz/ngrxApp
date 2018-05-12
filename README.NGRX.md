@@ -421,3 +421,18 @@ The example application organizes it like this:
   https://github.com/ngrx/platform/blob/master/example-app/app/auth/containers/login-page.component.ts
   
 We get the whole State from the Store and select the Substate we want from it via Selectors.
+
+
+## Server
+
+- https://github.com/testdrivenio/fake-token-api
+
+```
+cd ~/Sites/angular/ngrx/ngrxApp/server
+
+npm install body-parser cookie-parser cors express
+
+npm start
+
+chrome http://localhost:1337
+```
