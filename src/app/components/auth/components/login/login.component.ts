@@ -2,17 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-
 import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 
-import { LoggerService } from '../../../../services/logger.service';
-
 import { User } from '../../../../models/user';
 
-// App Actions.
+import { LoggerService } from '../../../../services/logger.service';
+
+// App and Auth Actions.
 import * as AppActions from '../../../../actions/app.actions';
 import * as AuthActions from '../../actions/auth.actions';
 // State and State Slices.
@@ -22,8 +19,7 @@ import * as fromAuth from '../../reducers/';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  providers: [LoggerService]
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   private logger: LoggerService;
@@ -95,7 +91,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.loginForm.valid) {
       this.logger.logInfo('LoginComponent - onSubmit - this.loginForm.value');
       this.logger.logInfo(this.loginForm.value);

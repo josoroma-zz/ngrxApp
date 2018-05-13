@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
 import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
@@ -7,39 +9,44 @@ import { User } from '../../../../models/user';
 
 import { LoggerService } from '../../../../services/logger.service';
 
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
+import * as AuthActions from '../../actions/auth.actions';
+import * as fromAuth from '../../reducers/';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
-  providers: [LoggerService]
+  styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
   private logger: LoggerService;
 
   user: User = new User();
+  getAuthState: Observable<any>;
+  errorMessage: string | null;
 
   signupForm: FormGroup;
   email: FormControl;
   password: FormControl;
 
-  constructor(logger: LoggerService) {
+  constructor(logger: LoggerService, private store: Store<fromAuth.State>) {
     this.logger = logger;
+
+    this.getAuthState = this.store.select(fromAuth.selectAuthState);
+
+    this.logger.logInfo('SignupComponent - constructor - this.getAuthState');
+    this.logger.logInfo(this.getAuthState);
   }
 
   ngOnInit() {
     this.createFormControls();
     this.createForm();
 
-    this.email.valueChanges
-      .debounceTime(400)
-      .distinctUntilChanged()
-      .subscribe(data => {
-        this.logger.logInfo('SignupComponent - ngOnInit - this.email.valueChanges - data');
-        this.logger.logInfo(data);
-      });
+    this.getAuthState.subscribe((state) => {
+      this.logger.logInfo('SignupComponent ==> ngOnInit - this.getAuthState.subscribe - state.errorMessage');
+      this.logger.logInfo(state.errorMessage);
+
+      this.errorMessage = state.errorMessage;
+    });
   }
 
   createFormControls() {
@@ -61,10 +68,13 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.signupForm.valid) {
       this.logger.logInfo('SignupComponent - onSubmit - this.signupForm.value');
       this.logger.logInfo(this.signupForm.value);
+
+      this.store.dispatch(new AuthActions.SignUp(this.signupForm.value));
+
       this.signupForm.reset();
     }
   }

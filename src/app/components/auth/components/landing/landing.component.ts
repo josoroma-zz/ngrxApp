@@ -12,4 +12,7 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
   }
 
+  logOut(): void {
+    this.store.dispatch(new LogOut);
+  }
 }
