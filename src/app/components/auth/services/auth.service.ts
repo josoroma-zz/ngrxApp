@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 
 import { User } from '../../../models/user';
 
-
 @Injectable()
 export class AuthService {
   private BASE_URL = 'http://localhost:1337';

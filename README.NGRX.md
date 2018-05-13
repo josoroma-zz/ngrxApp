@@ -422,6 +422,37 @@ The example application organizes it like this:
   
 We get the whole State from the Store and select the Substate we want from it via Selectors.
 
+## RXJS
+
+- `code ./src/app/components/auth/effects/auth.effects.ts`
+
+- https://github.com/ReactiveX/rxjs/blob/master/doc/operators.md
+
+- https://github.com/ReactiveX/rxjs/blob/master/doc/observable.md
+
+- https://github.com/ReactiveX/rxjs/blob/master/doc/subject.md#behaviorsubject
+
+- https://github.com/ReactiveX/rxjs/blob/master/doc/pipeable-operators.md
+
+### Article:
+
+- http://mherman.org/blog/2018/04/17/authentication-in-angular-with-ngrx/#.WvdSMBMvzxu
+
+### Login
+
+The `ofType` operator filters the action by a type. It accepts multiple action types, so one effect can handle a number of actions.
+
+Then, with `map`, we "map" the action to its payload. This, essentially, returns an observable with just the payload.
+
+The `switchMap` is used to switch back to the response observable but still use the payload as an argument in the switchMap function.
+
+### LoginSuccess
+
+The `pipe` method, which is used to compose a number of functions to act on the observable.
+
+Again, `ofType` associates the effect with an action while `tap` performs a side effect transparently. In other words, it returns an observable identical to the source. In our case, we’re adding the token to localStorage and then redirecting the user to /.
+
+Note: It’s a good practice to also dispatch a success or error action based on the result of the request.
 
 ## Server
 
