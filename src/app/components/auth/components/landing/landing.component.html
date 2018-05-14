@@ -14,6 +14,7 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button (click)="logOut()" color="accent">Logout</button>
+      <button mat-raised-button [routerLink]="['ping']" color="accent">Ping</button>
     </mat-card-actions>
   </mat-card>
 </ng-template>

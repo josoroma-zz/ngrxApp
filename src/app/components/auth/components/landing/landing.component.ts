@@ -27,8 +27,6 @@ export class LandingComponent implements OnInit {
   errorMessage = null;
 
   constructor(private logger: LoggerService, private store: Store<fromAuth.State>) {
-    this.logger = logger;
-
     this.getAuthState = this.store.select(fromAuth.selectAuthState);
 
     this.logger.logInfo('LoginComponent - constructor - this.getAuthState');

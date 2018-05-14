@@ -14,6 +14,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  isLoggednIn() {
+    return this.getToken() !== null;
+  }
+
   logIn(email: string, password: string): Observable<any> {
     const url = `${this.BASE_URL}/login`;
     return this.http.post<User>(url, {email, password});
@@ -24,8 +28,8 @@ export class AuthService {
     return this.http.post<User>(url, {email, password});
   }
 
-  getStatus(): Observable<User> {
-    const url = `${this.BASE_URL}/status`;
+  ping(): Observable<User> {
+    const url = `${this.BASE_URL}/ping`;
     return this.http.get<User>(url);
   }
 }

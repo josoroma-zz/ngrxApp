@@ -15,7 +15,8 @@ import { AuthService } from '../services/auth.service';
 import {
   AuthActionTypes,
   LogIn, LogInSuccess, LogInFailure,
-  SignUp, SignUpSuccess, SignUpFailure
+  SignUp, SignUpSuccess, SignUpFailure,
+  Ping
 } from '../actions/auth.actions';
 
 @Injectable()
@@ -92,9 +93,9 @@ export class AuthEffects {
   );
 
   @Effect({ dispatch: false })
-  GetStatus: Observable<any> = this.actions
-    .ofType(AuthActionTypes.GET_STATUS)
+  Ping: Observable<any> = this.actions
+    .ofType(AuthActionTypes.PING)
     .switchMap(payload => {
-      return this.authService.getStatus();
+      return this.authService.ping();
     });
 }

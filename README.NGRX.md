@@ -419,7 +419,7 @@ The example application organizes it like this:
 - The components of that feature use that interface and the given selectors.
 
   https://github.com/ngrx/platform/blob/master/example-app/app/auth/containers/login-page.component.ts
-  
+
 We get the whole State from the Store and select the Substate we want from it via Selectors.
 
 ## RXJS
@@ -466,4 +466,44 @@ npm install body-parser cookie-parser cors express
 npm start
 
 chrome http://localhost:1337
+```
+
+## Add HTTP Interceptor
+
+```
+ng g s components/auth/services/AuthInterceptor -m=components/auth/auth.module.ts
+
+create src/app/components/auth/services/auth-interceptor.service.spec.ts
+create src/app/components/auth/services/auth-interceptor.service.ts
+update src/app/components/auth/auth.module.ts
+```
+
+## Add Auth Guard
+
+- https://github.com/angular/angular-cli/wiki/generate-guard
+
+`navigateByUrl()` takes a string as a parameter.
+
+- https://angular.io/api/router/Router#navigatebyurl
+
+`navigate()` takes an array of URL segments as a parameter.
+
+- https://angular.io/api/router/Router#navigate
+
+```
+ng g guard components/auth/guard/Auth -m=components/auth/auth.module.ts
+
+create src/app/components/auth/guard/auth.guard.spec.ts
+create src/app/components/auth/guard/auth.guard.ts
+update src/app/components/auth/auth.module.ts
+```
+
+```
+ng g component components/auth/components/Ping -m components/auth/auth.module.ts --spec
+
+create src/app/components/auth/components/ping/ping.component.scss
+create src/app/components/auth/components/ping/ping.component.html
+create src/app/components/auth/components/ping/ping.component.spec.ts
+create src/app/components/auth/components/ping/ping.component.ts
+update src/app/components/auth/auth.module.ts
 ```

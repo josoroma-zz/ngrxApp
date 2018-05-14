@@ -40,7 +40,7 @@ app.post('/login', (req, res, next) => {
   }
 });
 
-app.get('/status', (req, res, next)  => {
+app.get('/ping', (req, res, next)  => {
   if (!(req.headers && req.headers.authorization)) {
     return res.status(400).json({
       status: 'error'

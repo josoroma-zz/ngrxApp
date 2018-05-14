@@ -27,8 +27,6 @@ export class SignupComponent implements OnInit {
   password: FormControl;
 
   constructor(private logger: LoggerService, private store: Store<fromAuth.State>) {
-    this.logger = logger;
-
     this.getAuthState = this.store.select(fromAuth.selectAuthState);
 
     this.logger.logInfo('SignupComponent - constructor - this.getAuthState');
