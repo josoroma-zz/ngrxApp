@@ -18,8 +18,6 @@ import * as fromAuth from '../../reducers/';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  private logger: LoggerService;
-
   user: User = new User();
   getAuthState: Observable<any>;
   errorMessage: string | null;
@@ -28,7 +26,7 @@ export class SignupComponent implements OnInit {
   email: FormControl;
   password: FormControl;
 
-  constructor(logger: LoggerService, private store: Store<fromAuth.State>) {
+  constructor(private logger: LoggerService, private store: Store<fromAuth.State>) {
     this.logger = logger;
 
     this.getAuthState = this.store.select(fromAuth.selectAuthState);

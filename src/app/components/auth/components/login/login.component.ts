@@ -22,8 +22,6 @@ import * as fromAuth from '../../reducers/';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  private logger: LoggerService;
-
   user: User = new User();
   getAppState: Observable<any>;
   getAuthState: Observable<any>;
@@ -33,7 +31,7 @@ export class LoginComponent implements OnInit {
   email: FormControl;
   password: FormControl;
 
-  constructor(logger: LoggerService, private store: Store<fromAuth.State>) {
+  constructor(private logger: LoggerService, private store: Store<fromAuth.State>) {
     this.logger = logger;
 
     this.getAppState = this.store.select(fromApp.selectAppState);
