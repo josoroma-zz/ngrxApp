@@ -1,4 +1,4 @@
-# Angular CLI + NGRX
+# Angular 5 + CLI + NGRX Schematics
 
 - https://github.com/angular/angular-cli
 
